@@ -583,9 +583,22 @@ public static class projectEuler
         {
             var newString = item.Trim();
             var result = newString.Split(' ');
-            var resultInt = result.Select(x => int.Parse(x)).ToArray();           
+            var resultInt = result.Select(x => int.Parse(x)).ToArray();
             listNumbers.Add(resultInt);
         }
         Console.WriteLine(sum);
+    }
+
+    static public int NumberLetterCounts(int n)
+    {
+        int count = 0;
+        string[] numberName = { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+            "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
+            "eighteen", "nineteen" };
+        
+        if (n < 20)
+            return numberName[n].Length;
+
+        return 0;   
     }
 }
