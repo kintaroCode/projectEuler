@@ -589,16 +589,31 @@ public static class projectEuler
         Console.WriteLine(sum);
     }
 
-    static public int NumberLetterCounts(int n)
+    static public int NumberLetterCounts(int number)
     {
-        int count = 0;
-        string[] numberName = { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
-            "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
-            "eighteen", "nineteen" };
-        
-        if (n < 20)
-            return numberName[n].Length;
+        string[] units = { "", "one", "two", "three", "four", "five",
+                       "six", "seven", "eight", "nine", "ten",
+                       "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+                       "sixteen", "seventeen", "eighteen", "nineteen" };
+        string[] tens = { "", "", "twenty", "thirty", "forty", "fifty",
+                      "sixty", "seventy", "eighty", "ninety" };
 
-        return 0;   
+        int total = 0;
+
+        if (number < 20)
+           total += units[number].Length;
+        else if (number < 100)
+           total += tens[number / 10].Length + units[number % 10].Length;
+        else if (number < 1000)
+            {
+                int remainder = number % 100;
+                total += units[number / 100].Length + "hundred".Length;
+                if (remainder > 0)
+                    total += "and".Length + NumberLetterCounts(remainder);
+            }
+        else if (number == 1000)
+            total += "onethousand".Length;
+        
+        return total;
     }
 }
