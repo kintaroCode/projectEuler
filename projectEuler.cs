@@ -616,4 +616,41 @@ public static class projectEuler
         
         return total;
     }
+
+    static public void AmicableNumbers(int numberLimit)
+    {
+        int lap = 0;
+        int sumAmicable = 0;
+        do
+        {
+            lap++;
+            List<int> amicableA = new();
+            List<int> amicableB = new();
+
+            for (int i = 1; i < lap; i++)
+            {
+                if (lap % i == 0)
+                {
+                    amicableA.Add(i);
+                }               
+            }
+
+            for (int j = 1; j < amicableA.Sum(); j++)
+            {
+                if (amicableA.Sum() % j  == 0)
+                {
+                    amicableB.Add(j);
+                }
+            }
+
+            if (amicableB.Sum() == lap && amicableA.Sum() != lap)
+            {
+                sumAmicable += amicableA.Sum() + amicableB.Sum();
+            }
+        }
+        while (lap < numberLimit);
+
+        Console.WriteLine(sumAmicable/2);
+        
+    }
 }

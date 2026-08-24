@@ -8,10 +8,10 @@
 //projectEuler.LargestProductInAGrid();
 //projectEuler.PitagoreanTriplet();
 
-int count = 0; 
-for (int i = 1; i < 1000 +1; i++)
-{
-    count += projectEuler.NumberLetterCounts(i);
-}
+//int count = 0; 
+//for (int i = 1; i < 1000 +1; i++)
+//{
+//    count += projectEuler.NumberLetterCounts(i);
+//}
 
-Console.WriteLine(count);
+projectEuler.AmicableNumbers(10000);
