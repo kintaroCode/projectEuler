@@ -653,4 +653,34 @@ public static class projectEuler
         Console.WriteLine(sumAmicable/2);
         
     }
+
+    static public void NamesScores()
+    {
+        string location = "";
+        string[] names = System.IO.File.ReadAllLines("C:\\Users\\User\\Desktop\\0022_names.txt");
+        List<string> namesIndividual = new List<string>( names = names[0].Split(',').Select(x => x.Replace("\"", "")).ToArray());
+        
+
+        char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+        int sum = 0;      
+        int total = 0;
+        int index = 0;
+        List<string> ordenedList = namesIndividual.OrderBy(n => n).ToList();       
+        foreach (var name in ordenedList)
+        {
+            for (int i = 0; i < alphabet.Length; i++)
+            {
+                for (int j = 0; j < name.ToUpper().Length; j++)
+                {
+                    if (alphabet[i] == name.ToUpper()[j])
+                    {
+                        sum += i+1;
+                    }
+                }
+            }
+            index++;
+            total = sum * index;
+        }
+        Console.WriteLine(total);
+    }
 }

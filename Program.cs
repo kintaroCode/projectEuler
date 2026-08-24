@@ -14,4 +14,5 @@
 //    count += projectEuler.NumberLetterCounts(i);
 //}
 
-projectEuler.AmicableNumbers(10000);
+//projectEuler.AmicableNumbers(10000);
+projectEuler.NamesScores();
