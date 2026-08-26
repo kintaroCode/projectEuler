@@ -679,7 +679,8 @@ public static class projectEuler
                 }
             }
             index++;
-            total = sum * index;
+            total += sum * index;
+            sum = 0;
         }
         Console.WriteLine(total);
     }
