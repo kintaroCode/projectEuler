@@ -684,4 +684,15 @@ public static class projectEuler
         }
         Console.WriteLine(total);
     }
+
+    static public void NonAbundantSums(int limit)
+    {
+        for (int i = 0; i < 200; i++)
+        {
+            for (int i = 0; i < length; i++)
+            {
+
+            }
+        }
+    }
 }

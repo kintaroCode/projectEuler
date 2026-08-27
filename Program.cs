@@ -15,4 +15,7 @@
 //}
 
 //projectEuler.AmicableNumbers(10000);
-projectEuler.NamesScores();
+//exercises 22
+//projectEuler.NamesScores();
+
+//exercise 23
