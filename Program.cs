@@ -19,3 +19,5 @@
 //projectEuler.NamesScores();
 
 //exercise 23
+
+projectEuler.NonAbundantSums(28123);

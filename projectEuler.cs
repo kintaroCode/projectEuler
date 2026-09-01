@@ -685,14 +685,48 @@ public static class projectEuler
         Console.WriteLine(total);
     }
 
-    static public void NonAbundantSums(int limit)
+    static public void NonAbundantSums(long limit)
     {
-        for (int i = 0; i < 200; i++)
+        long lap = 0;
+        long sumLap = 0;
+        List<long> numberAdded = new();
+        List<long> abundats = new();
+        do
         {
-            for (int i = 0; i < length; i++)
+            List<long> divisores = new();
+            lap++;
+            sumLap += lap;
+            for (int i = 1; i < lap; i++)
             {
+                if (lap % i == 0)
+                {
+                    divisores.Add(i);
+                }
+            }
 
+            if (divisores.Sum() > lap)
+            {
+                abundats.Add(lap);
+                Console.WriteLine($"is abundant {lap}");
             }
         }
+        while (lap < limit-1);
+
+        Console.WriteLine(sumLap);
+        for (int i = 0; i < abundats.Count(); i++)
+        {
+            for (int j = i; j < abundats.Count(); j++)
+            {
+                long newSum = abundats[i] + abundats[j]; 
+                if (!(newSum > limit - 1) && !numberAdded.Contains(newSum))
+                {
+                    Console.WriteLine($"suma es {sumLap} - {newSum} = {sumLap - newSum} ; ");
+                    sumLap -= (abundats[i] + abundats[j]);
+                    numberAdded.Add(newSum);
+                }    
+                
+            }
+        }
+
     }
 }
