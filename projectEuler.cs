@@ -729,4 +729,54 @@ public static class projectEuler
         }
 
     }
+
+    static public void LexicographicPermutations()
+    {
+        
+        List<int> digitos = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        
+        int objetivo = 1000000;
+        
+        int[] factoriales = new int[10];
+        factoriales[0] = 1;
+        for (int i = 1; i < 10; i++)
+        {
+            factoriales[i] = factoriales[i - 1] * i;
+        }
+        
+        string resultado = "";
+        
+        int indice = objetivo - 1;        
+        for (int i = 9; i >= 0; i--)
+        {            
+            int posicion = indice / factoriales[i];
+            resultado += digitos[posicion];
+            
+            digitos.RemoveAt(posicion);            
+            indice = indice % factoriales[i];
+        }
+        Console.WriteLine($"La permutación número 1,000,000 es: {resultado}");
+    }
+
+    public static void DigitsFibonacciNumber(int index) {
+        int lap = 2;
+        BigInteger upper = 1;
+        BigInteger total = 0;
+        BigInteger lower = 1;
+        do
+        {
+            lap++;
+            total = lower + upper;
+            lower = upper;
+            upper = total;
+            if (total.ToString().Length == (index/10))
+            {
+                 Console.WriteLine(total);
+
+            }
+
+        } while (total.ToString().Length != index);
+
+        Console.WriteLine(lap);
+    }
 }

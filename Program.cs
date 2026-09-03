@@ -20,4 +20,11 @@
 
 //exercise 23
 
-projectEuler.NonAbundantSums(28123);
+//projectEuler.NonAbundantSums(28123);
+
+//24
+
+//projectEuler.LexicographicPermutations();
+
+//25 
+projectEuler.DigitsFibonacciNumber(1000);
