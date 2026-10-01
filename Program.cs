@@ -27,4 +27,18 @@
 //projectEuler.LexicographicPermutations();
 
 //25 
-projectEuler.DigitsFibonacciNumber(1000);
+//projectEuler.DigitsFibonacciNumber(1000);
+
+//50
+
+//Console.WriteLine( projectEuler1to50.ConsecutivePrimeSum(1000000));
+
+//49
+
+//Console.WriteLine(projectEuler1to50.PrimePermutacion(9999, 1000));
+
+//problem 48
+//Console.WriteLine(projectEuler1to50.SelfPowers(1000));
+
+//problem 47
+Console.WriteLine(projectEuler1to50.DistinctPrimesFactors(1, 299999));

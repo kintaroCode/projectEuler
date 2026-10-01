@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Numerics;
 
-public static class projectEuler
+public static class projectEuler1to50
 {
     public static int SumMultiplyThreeAndFive(float numberBase)
     {
@@ -601,19 +601,19 @@ public static class projectEuler
         int total = 0;
 
         if (number < 20)
-           total += units[number].Length;
+            total += units[number].Length;
         else if (number < 100)
-           total += tens[number / 10].Length + units[number % 10].Length;
+            total += tens[number / 10].Length + units[number % 10].Length;
         else if (number < 1000)
-            {
-                int remainder = number % 100;
-                total += units[number / 100].Length + "hundred".Length;
-                if (remainder > 0)
-                    total += "and".Length + NumberLetterCounts(remainder);
-            }
+        {
+            int remainder = number % 100;
+            total += units[number / 100].Length + "hundred".Length;
+            if (remainder > 0)
+                total += "and".Length + NumberLetterCounts(remainder);
+        }
         else if (number == 1000)
             total += "onethousand".Length;
-        
+
         return total;
     }
 
@@ -632,12 +632,12 @@ public static class projectEuler
                 if (lap % i == 0)
                 {
                     amicableA.Add(i);
-                }               
+                }
             }
 
             for (int j = 1; j < amicableA.Sum(); j++)
             {
-                if (amicableA.Sum() % j  == 0)
+                if (amicableA.Sum() % j == 0)
                 {
                     amicableB.Add(j);
                 }
@@ -650,22 +650,22 @@ public static class projectEuler
         }
         while (lap < numberLimit);
 
-        Console.WriteLine(sumAmicable/2);
-        
+        Console.WriteLine(sumAmicable / 2);
+
     }
 
     static public void NamesScores()
     {
         string location = "";
         string[] names = System.IO.File.ReadAllLines("C:\\Users\\User\\Desktop\\0022_names.txt");
-        List<string> namesIndividual = new List<string>( names = names[0].Split(',').Select(x => x.Replace("\"", "")).ToArray());
-        
+        List<string> namesIndividual = new List<string>(names = names[0].Split(',').Select(x => x.Replace("\"", "")).ToArray());
+
 
         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-        int sum = 0;      
+        int sum = 0;
         int total = 0;
         int index = 0;
-        List<string> ordenedList = namesIndividual.OrderBy(n => n).ToList();       
+        List<string> ordenedList = namesIndividual.OrderBy(n => n).ToList();
         foreach (var name in ordenedList)
         {
             for (int i = 0; i < alphabet.Length; i++)
@@ -674,7 +674,7 @@ public static class projectEuler
                 {
                     if (alphabet[i] == name.ToUpper()[j])
                     {
-                        sum += i+1;
+                        sum += i + 1;
                     }
                 }
             }
@@ -710,21 +710,21 @@ public static class projectEuler
                 Console.WriteLine($"is abundant {lap}");
             }
         }
-        while (lap < limit-1);
+        while (lap < limit - 1);
 
         Console.WriteLine(sumLap);
         for (int i = 0; i < abundats.Count(); i++)
         {
             for (int j = i; j < abundats.Count(); j++)
             {
-                long newSum = abundats[i] + abundats[j]; 
+                long newSum = abundats[i] + abundats[j];
                 if (!(newSum > limit - 1) && !numberAdded.Contains(newSum))
                 {
                     Console.WriteLine($"suma es {sumLap} - {newSum} = {sumLap - newSum} ; ");
                     sumLap -= (abundats[i] + abundats[j]);
                     numberAdded.Add(newSum);
-                }    
-                
+                }
+
             }
         }
 
@@ -732,27 +732,27 @@ public static class projectEuler
 
     static public void LexicographicPermutations()
     {
-        
+
         List<int> digitos = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        
+
         int objetivo = 1000000;
-        
+
         int[] factoriales = new int[10];
         factoriales[0] = 1;
         for (int i = 1; i < 10; i++)
         {
             factoriales[i] = factoriales[i - 1] * i;
         }
-        
+
         string resultado = "";
-        
-        int indice = objetivo - 1;        
+
+        int indice = objetivo - 1;
         for (int i = 9; i >= 0; i--)
-        {            
+        {
             int posicion = indice / factoriales[i];
             resultado += digitos[posicion];
-            
-            digitos.RemoveAt(posicion);            
+
+            digitos.RemoveAt(posicion);
             indice = indice % factoriales[i];
         }
         Console.WriteLine($"La permutación número 1,000,000 es: {resultado}");
@@ -769,9 +769,9 @@ public static class projectEuler
             total = lower + upper;
             lower = upper;
             upper = total;
-            if (total.ToString().Length == (index/10))
+            if (total.ToString().Length == (index / 10))
             {
-                 Console.WriteLine(total);
+                Console.WriteLine(total);
 
             }
 
@@ -779,4 +779,230 @@ public static class projectEuler
 
         Console.WriteLine(lap);
     }
+
+    public static int ConsecutivePrimeSum(int limit)
+    {
+        List<int> ListPrimes = new();
+        ListPrimes.Add(2);
+        ListPrimes.Add(3);
+        ListPrimes.Add(5);
+        for (int i = 3; i < limit; i++)
+        {
+            if (i % 2 != 0 || i % 3 != 0 || i % 5 != 0)
+            {
+                int divisors = 0;
+                for (int j = 1; j <= i; j++)
+                {
+                    if (i % j == 0)
+                        divisors++;
+
+                    if (divisors > 2)
+                        break;
+                }
+
+                if (divisors == 2)
+                    ListPrimes.Add(i);
+            }
+        }
+        List<int> MaxElementsList = new();
+        List<int> ElementsList = new();
+
+        for (int k = 0; k < ListPrimes.Count(); k++)
+        {
+            for (int i = k; i < ListPrimes.Count(); i++)
+            {
+                ElementsList.Add(ListPrimes[i]);
+                if (ElementsList.Sum() >= limit) break;
+
+                if (ListPrimes.Contains(ElementsList.Sum()) && ElementsList.Count() > MaxElementsList.Count())
+                {
+                    MaxElementsList = new List<int>(ElementsList);
+                }
+            }
+            ElementsList.Clear();
+        }
+
+        return MaxElementsList.Sum();
+    }
+
+    public static long PrimePermutacion(int limit, int init)
+    {
+        List<int> ListPrimes = new();
+
+        for (int i = init; i < limit; i++)
+        {
+            if (i % 2 != 0 || i % 3 != 0 || i % 5 != 0)
+            {
+                int divisors = 0;
+                for (int j = 1; j <= i; j++)
+                {
+                    if (i % j == 0)
+                        divisors++;
+
+                    if (divisors > 2)
+                        break;
+                }
+
+                if (divisors == 2)
+                {
+
+                    ListPrimes.Add(i);
+
+                }
+            }
+        }
+
+        List<string> Primes = new();
+
+        for (int i = 0; i < ListPrimes.Count(); i++)
+        {
+            if (ListPrimes[i] == 1487)
+            {
+                Console.WriteLine();
+            }
+            for (int j = i + 1; j < ListPrimes.Count(); j++)
+            {
+                if (ListPrimes[j] == 4817)
+                {
+                    Console.WriteLine();
+                }
+                for (int k = i + 2; k < ListPrimes.Count(); k++)
+                {
+                    if (ListPrimes[k] == 8147)
+                    {
+                        Console.WriteLine();
+                    }
+                    if (ListPrimes[j] - ListPrimes[i] == ListPrimes[k] - ListPrimes[j])
+                    {
+                        char[] a = ListPrimes[i].ToString().ToCharArray();
+                        char[] b = ListPrimes[j].ToString().ToCharArray();
+                        char[] c = ListPrimes[k].ToString().ToCharArray();
+                        Array.Sort(a);
+                        Array.Sort(b);
+                        Array.Sort(c);
+                        string d = new String(a);
+                        string e = new String(b);
+                        string f = new String(c);
+
+                        if (d == e && e == f)
+                        {
+                            Primes.Add(ListPrimes[i].ToString() + ListPrimes[j].ToString() + ListPrimes[k].ToString());
+                        }
+
+                    }
+                }
+            }
+        }
+
+        return 0;
+    }
+
+    static long Factorial(int n)
+    {
+        long r = 1;
+        for (int i = 2; i <= n; i++) r *= i;
+        return r;
+    }
+
+    static (int, int) operationPrimes(int n)
+    {
+        return (n * (n + 1) + 41, n * (n - 79) + 1601);
+    }
+
+    public static int QuadraticPrimes(int limit)
+    {
+        for (int i = 0; i < limit; i++)
+        {
+            Console.WriteLine(operationPrimes(i));
+        }
+
+        return 0;
+    }
+    public static string SelfPowers(int limit)
+    {
+        BigInteger result = 0;
+        for (int i = 1; i < limit+1; i++)
+        {
+            result += Pow(i, i);
+        }
+
+        int size = result.ToString().Length;
+        Console.WriteLine(result.ToString());
+        return result.ToString().Substring(size - 10, 10);
+    }
+
+    static BigInteger Pow(BigInteger a, BigInteger b) {
+        BigInteger sum= 1;
+        for (int i = 0; i < b; i++) sum *= a;
+
+        return sum;
+    } 
+
+    public static int DistinctPrimesFactors(int start, int limit) {
+        Dictionary<int,List<int>> PrimesFactors = new Dictionary<int,List<int>>();
+        var list = ListPrimes(limit/2 + 1);
+        for (int i = start; i < limit; i++)
+        {
+            List<int> primes = new();
+            for (int j = 1; j < i/2 + 1; j++)
+            {
+                if (i % j == 0 && list.Contains(j) )
+                {
+                    primes.Add(j);
+                }
+                
+            }
+
+            if (primes.Count > 3 )
+            {
+
+                PrimesFactors.Add(i, primes);
+            }
+        }
+
+        foreach (var item in PrimesFactors)
+        {
+            if (PrimesFactors.ContainsKey(item.Key + 1) && PrimesFactors.ContainsKey(item.Key + 2) && PrimesFactors.ContainsKey(item.Key + 3))
+            {
+                Console.WriteLine($"numeros consecutivos : {item.Key}, {item.Key + 1}, {item.Key + 2}, , {item.Key + 3}");
+            }
+        }
+
+        return 0;
+    } 
+
+    static List<int> ListPrimes( int limit, int init = 1)
+    {
+        List<int> ListPrimes = new();
+
+        for (int i = init; i < limit; i++)
+        {
+            if (i % 2 != 0 || i % 3 != 0 || i % 5 != 0)
+            {
+                int divisors = 0;
+                for (int j = 1; j <= i; j++)
+                {
+                    if (i % j == 0)
+                        divisors++;
+
+                    if (divisors > 2)
+                        break;
+                }
+
+                if (divisors == 2)
+                {
+
+                    ListPrimes.Add(i);
+
+                }
+            }
+        }
+
+        return ListPrimes;
+    }
+
+
+    
+
+
 }
