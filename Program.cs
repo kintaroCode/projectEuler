@@ -41,4 +41,7 @@
 //Console.WriteLine(projectEuler1to50.SelfPowers(1000));
 
 //problem 47
-Console.WriteLine(projectEuler1to50.DistinctPrimesFactors(1, 299999));
+//Console.WriteLine(projectEuler1to50.DistinctPrimesFactors(1, 299999));
+
+//problem 45 
+Console.WriteLine(projectEuler1to50.TriangularPentagonalAndHexagonal(2, 100000));

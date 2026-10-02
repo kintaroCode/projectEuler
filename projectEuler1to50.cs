@@ -1001,8 +1001,53 @@ public static class projectEuler1to50
         return ListPrimes;
     }
 
+    static BigInteger Triangular(BigInteger n)
+    {
+        return (n * (n + 1)) / 2;
+    }
 
-    
+    static BigInteger Pentagonal(BigInteger n)
+    {
+        return (n * (3 * n - 1)) / 2;
+    }
 
+    static BigInteger Hexagonal(BigInteger n)
+    {
+        return n * (2 * n - 1);
+    }
 
+    public static BigInteger TriangularPentagonalAndHexagonal(int ordered, int limit)
+    {
+        int same = 0;
+        for (BigInteger i = 2; i < limit; i++)
+        {
+            BigInteger tri = Triangular(i);               
+            
+            for (BigInteger ji = i; ji > 1; ji -= 3)
+            {
+                
+                BigInteger pen = Pentagonal(ji);
+                
+                if (tri == pen)
+                {
+                    for (BigInteger k = ji; k > 1; k--)
+                    {
+                        BigInteger hex = Hexagonal(k);
+
+                        if (tri == hex && tri == pen)
+                        {
+                            Console.WriteLine($"{tri} - {pen} - {hex} ");
+                            same++;
+                            if (same == ordered)
+                            {
+                                return tri;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return -1;
+    }    
 }
