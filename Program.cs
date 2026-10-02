@@ -47,4 +47,7 @@
 //Console.WriteLine(projectEuler1to50.TriangularPentagonalAndHexagonal(2, 100000));
 
 //problem 44
-Console.WriteLine(projectEuler1to50.PentagonalNumber());
+//Console.WriteLine(projectEuler1to50.PentagonalNumber());
+
+//problem 42
+Console.WriteLine(projectEuler1to50.CodedTriangleNumbers());

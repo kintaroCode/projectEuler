@@ -1077,4 +1077,39 @@ public static class projectEuler1to50
 
         return 0;
     }
+
+    public static int CodedTriangleNumbers()
+    {
+        int count = 0;
+        var dir = "Z:\\DescargasZ\\0042_words.txt";
+        string[] names = System.IO.File.ReadAllLines(dir);
+        List<string> namesIndividual = new List<string>(names = names[0].Split(',').Select(x => x.Replace("\"", "")).ToArray());
+        char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+
+        List<BigInteger> listTriangleNumber = new();
+        int limit = 100;        
+
+        for (int i = 1; i < limit; i++)
+        {
+            listTriangleNumber.Add(Triangular(i));
+        }
+
+        foreach (string item in namesIndividual)
+        {
+            int sum = 0;
+            for (int i = 0; i < item.Length; i++)
+            {
+                int value = alphabet.IndexOf(item[i]);
+                sum += value + 1;                
+            }
+
+            if (listTriangleNumber.Contains(sum)) count++;    
+           
+        }
+
+
+        return count;
+    }
+
+
 }
