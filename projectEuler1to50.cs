@@ -1050,4 +1050,31 @@ public static class projectEuler1to50
         }
         return -1;
     }    
+
+    public static BigInteger PentagonalNumber()
+    {
+        List<BigInteger> numbers = new List<BigInteger>();
+        int limit = 10000;
+        for (int i = 1; i < limit; i++)
+        {
+            numbers.Add(Pentagonal(i));
+        }
+        for (int i = 0; i < numbers.Count(); i++)
+        {
+            for (int j = i+1; j < numbers.Count(); j++)
+            {
+                var sum = numbers[i] + numbers[j];
+                if (numbers.Contains(sum))
+                {
+                    var dif = numbers[j] - numbers[i];
+                    if (numbers.Contains(dif))
+                    {
+                        Console.WriteLine($"{numbers[i] - numbers[j]}");
+                    }
+                }
+            }
+        }
+
+        return 0;
+    }
 }

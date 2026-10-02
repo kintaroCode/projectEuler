@@ -44,4 +44,7 @@
 //Console.WriteLine(projectEuler1to50.DistinctPrimesFactors(1, 299999));
 
 //problem 45 
-Console.WriteLine(projectEuler1to50.TriangularPentagonalAndHexagonal(2, 100000));
+//Console.WriteLine(projectEuler1to50.TriangularPentagonalAndHexagonal(2, 100000));
+
+//problem 44
+Console.WriteLine(projectEuler1to50.PentagonalNumber());
