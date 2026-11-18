@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Numerics;
+using System.Collections;
 
 public static class projectEuler1to50
 {
@@ -1111,5 +1112,106 @@ public static class projectEuler1to50
         return count;
     }
 
+    public static int MaximumPathSumI()
+    {
+        string piramid = "75<br>\r\n95 64<br>\r\n17 47 82<br>\r\n18 35 87 10<br>\r\n20 04 82 47 65<br>\r\n19 01 23 75 03 34<br>\r\n88 02 77 73 07 63 67<br>\r\n99 65 04 28 06 16 70 92<br>\r\n41 41 26 56 83 40 80 70 33<br>\r\n41 48 72 33 47 32 37 16 94 29<br>\r\n53 71 44 65 25 43 91 52 97 51 14<br>\r\n70 11 33 28 77 73 17 78 39 68 17 57<br>\r\n91 71 52 38 17 14 91 43 58 50 27 29 48<br>\r\n63 66 04 68 89 53 67 30 73 16 69 87 40 31<br>\r\n04 62 98 27 23 09 70 98 73 93 38 53 60 04 23";
+        var piramidClean = piramid.Replace("\r\n", "").Split("<br>", StringSplitOptions.None).ToList();
+        List<int[]> piramidInt = new();
+        int suma = 0;
 
+        foreach (var item in piramidClean)
+        {
+            var aux = item.Split(" ");
+            int[] ints = new int[aux.Length]; 
+            for (int i = 0; i < aux.Length; i++)
+            {
+                ints[i] = Convert.ToInt16(aux[i]);
+            }
+            piramidInt.Add(ints);
+            Console.WriteLine();
+        }
+
+        int index = 0;
+        foreach (var item in piramidInt)
+        {
+            if (item.Length > 1)
+            {
+                if (item[index] > item[index + 1])
+                {
+                    suma += item[index];
+                }
+                else
+                {
+                    suma += item[index + 1];
+                    index += 1;
+                }                
+            }
+            else
+            {
+                suma = item[0];
+            }
+
+            Console.Write(suma);
+            Console.WriteLine($" {index}");
+        }
+
+        return 0;
+    }
+    public static int CoinSums()
+    {
+        int limit = 200;
+        int[] coins = new int[] { 1, 2, 5, 10, 20, 50, 100, 200};
+        int sum = 0;
+        int sumLimits = 0;
+
+        int[] multiplyCoins = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+
+
+        for (int i = 0; i < 200 + 1 ; i++)
+        {
+            for (int j = 0; j < 100 + 1; j++)
+            {
+                for (int k = 0; k < 40 + 1; k++)
+                {
+                    for (int l = 0; l < 20 +1; l++)
+                    {
+                        for (int m = 0; m < 10 + 1; m++)
+                        {
+                            for (int n = 0; n < 4 + 1; n++)
+                            {
+                                for (int o = 0; o < 2 + 1; o++)
+                                {
+                                    for (int p = 0; p < 1 + 1; p++)
+                                    {
+                                        multiplyCoins[0] = i;
+                                        multiplyCoins[1] = j;
+                                        multiplyCoins[2] = k;
+                                        multiplyCoins[3] = l;
+                                        multiplyCoins[4] = m;
+                                        multiplyCoins[5] = n;
+                                        multiplyCoins[6] = o;
+                                        multiplyCoins[7] = p;
+
+                                        for (int q = 0; q < 8; q++)
+                                        {
+                                            sum += coins[q] * multiplyCoins[q];
+                                        }
+
+                                        if (sum == 200)
+                                        {
+                                            sumLimits++;
+                                            break;
+                                        }
+                                        sum = 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return sumLimits;
+    }
 }

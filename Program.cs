@@ -50,4 +50,6 @@
 //Console.WriteLine(projectEuler1to50.PentagonalNumber());
 
 //problem 42
-Console.WriteLine(projectEuler1to50.CodedTriangleNumbers());
+//Console.WriteLine(projectEuler1to50.CodedTriangleNumbers());
+//problem 31
+Console.WriteLine(projectEuler1to50.CoinSums());
