@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Numerics;
 using System.Collections;
+using System.Xml.XPath;
 
 public static class projectEuler1to50
 {
@@ -1213,5 +1214,119 @@ public static class projectEuler1to50
         }
 
         return sumLimits;
+    }
+
+    static public void PandigitalProducts()
+    {
+        int total = 0;
+        List<int> listProducts = new List<int>();
+        for(int i = 1; i < 9999 + 1; i++)
+        {
+            for (int j = i; j < 9999; j++)
+            {
+                if (i == j) continue;
+
+                char[] ValueI = i.ToString().ToCharArray();
+                char[] Valuej = j.ToString().ToCharArray();
+                char[] result = (i*j).ToString().ToCharArray();
+                if ((ValueI.Length + Valuej.Length + result.Length) == 9)
+                {
+                    var cr = ValueI.Concat(Valuej).Concat(result).ToArray();
+                    if (cr.Distinct().Count() != 9 ) continue;                  
+                    
+                    if (listProducts.Contains(i * j) || cr.Contains('0')) continue;                        
+                    
+                    listProducts.Add(i * j);    
+                    total += i * j;
+                    
+                }
+            }
+        }
+
+        Console.WriteLine(total);
+    }
+
+    static public BigInteger Factorial2(int n)
+    {
+        BigInteger result = 1;
+
+        for (int i = 2; i <= n; i++)
+            result *= i;
+
+        return result;
+    }
+
+    static public void DigitFactorials()
+    {
+            BigInteger totalSum = 0;
+        for (int i = 3; i < 1000000; i++)
+        {
+            char[] digits = i.ToString().ToCharArray();
+            BigInteger sum = 0;
+            for (int j = 0; j < digits.Count(); j++)
+            {                
+                var fac = Factorial2( Convert.ToInt32(digits[j] - '0'));
+                sum += fac;                
+            }
+
+            if (sum == i)
+            {
+                totalSum += sum;
+            }
+            
+        }
+        Console.WriteLine(totalSum);
+    }
+
+    static public void PandigitalMultiple()
+    {
+        int mostValue = 1;
+        for (int i = 2; i < 9999; i++)
+        {
+            string result = "";
+            for (int j = 1; j < 10; j++)
+            {
+                
+                result += (i * j).ToString();
+
+                if (result.Length > 9 || (result.Distinct().Count() != result.Length) || result.Contains('0')) break;
+
+                if (result.Length == 9)
+                {
+                    int pandigital = Convert.ToInt32(result);
+                    if (pandigital > mostValue)
+                    {
+                        mostValue = pandigital;
+                    }
+                    
+                    Console.WriteLine(mostValue);
+                    
+                }
+            }
+        }
+
+        Console.WriteLine(mostValue);
+
+    }
+
+    static public void DigitFifthPowers()
+    {
+        double sumTotal = 0;
+        for (int i = 2; i < 10000000; i++)
+        {
+            char[] inChar = i.ToString().ToCharArray();
+            double sumDigits = 0;
+            for (int j = 0; j < inChar.Count(); j++)
+            {
+                sumDigits +=  Math.Pow(Convert.ToDouble(inChar[j]-'0'), 5);
+            }
+            if (sumDigits == i )
+            {
+                Console.WriteLine( $"{i} - sum of digits {sumDigits}");
+               
+                sumTotal += sumDigits;
+            }
+        }
+        Console.WriteLine(sumTotal);
     }
 }
