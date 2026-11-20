@@ -52,4 +52,4 @@
 //problem 42
 //Console.WriteLine(projectEuler1to50.CodedTriangleNumbers());
 //problem 31
-projectEuler1to50.DigitFifthPowers();
+projectEuler1to50.ChampernowneConstant();

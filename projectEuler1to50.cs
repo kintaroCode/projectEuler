@@ -1329,4 +1329,59 @@ public static class projectEuler1to50
         }
         Console.WriteLine(sumTotal);
     }
+
+    public static void PandigitalPrime()
+    {
+        int bigest = 0;
+        for (int i = 1000000; i < 100000000; i++)
+        {
+            char[] result = i.ToString().ToCharArray();
+            var large = (result.Length + 1).ToString().ToCharArray();
+            if (result.Distinct().Count() != result.Length || result.Contains('0') || result.Contains('8') || result.Contains('9')) continue;
+
+            if (i > bigest & IsPrime(i))
+            {
+                bigest = i;
+            }
+
+        }
+        Console.WriteLine(bigest);
+    }
+
+    static bool IsPrime(int n)
+    {
+        int divisor = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            if (n%i == 0)
+            {
+                divisor++;
+                if (divisor > 2) break;
+            }
+        }
+
+        if (divisor == 2) return true;
+        
+        return false;
+    }
+
+    public static void ChampernowneConstant()
+    {
+        int position = 0;
+        string textNumber = "0.";
+        for (int i = 1; i < 200000; i++)
+        {
+            textNumber += i.ToString();
+            position += i.ToString().Length;
+        }
+
+        int a = textNumber[2] - '0';
+        int ab = textNumber[11] - '0';
+        int b = textNumber[101] - '0';
+        int c = textNumber[1001] - '0';
+        int d = textNumber[10001] - '0';
+        int e = textNumber[100001] - '0';
+        int f = textNumber[1000001] - '0';
+        Console.WriteLine(a*ab*b*c*d*e*f);
+    }
 }
