@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Numerics;
 using System.Collections;
 using System.Xml.XPath;
+using System.ComponentModel;
 
 public static class projectEuler1to50
 {
@@ -1383,5 +1384,51 @@ public static class projectEuler1to50
         int e = textNumber[100001] - '0';
         int f = textNumber[1000001] - '0';
         Console.WriteLine(a*ab*b*c*d*e*f);
+    }
+
+    public static void DistinctPowers()
+    {
+        List<BigInteger> lista = new List<BigInteger>(); 
+        List<BigInteger> listaDefinitiva = new List<BigInteger>(); 
+        for (BigInteger a = 2; a <= 100; a++)
+        {
+            for (int b = 2; b <= 100; b++)
+            {
+                BigInteger sum = 0;
+                
+
+                lista.Add(BigInteger.Pow(a,b));
+                
+            }
+            listaDefinitiva = lista.Distinct().ToList();
+        }
+        Console.WriteLine(listaDefinitiva.Count());
+    }
+
+    public static void NumberSpiralDiagonals()
+    {
+        int total = 1001 * 1001;
+        List<int> list = new List<int>();              
+        int flag = 0;
+
+        for (int i = 1; i <= total; i++)
+        {
+            list.Add(i);
+        }
+
+        int sum = list[0];
+        int IndexIncreased = 2;
+        for (int i = 2; i <= list.Count(); i = i+ IndexIncreased)
+        {
+            sum += list[i];
+            flag++;
+            if (flag == 4)
+            {
+                flag = 0;
+                IndexIncreased += 2;
+            }
+        }
+
+        Console.WriteLine(sum);
     }
 }

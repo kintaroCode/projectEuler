@@ -52,4 +52,8 @@
 //problem 42
 //Console.WriteLine(projectEuler1to50.CodedTriangleNumbers());
 //problem 31
-projectEuler1to50.ChampernowneConstant();
+//projectEuler1to50.DistinctPowers();
+
+//problem 28
+projectEuler1to50.NumberSpiralDiagonals();
+
