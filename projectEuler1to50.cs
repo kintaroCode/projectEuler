@@ -924,7 +924,7 @@ public static class projectEuler1to50
     public static string SelfPowers(int limit)
     {
         BigInteger result = 0;
-        for (int i = 1; i < limit+1; i++)
+        for (int i = 1; i < limit + 1; i++)
         {
             result += Pow(i, i);
         }
@@ -935,28 +935,28 @@ public static class projectEuler1to50
     }
 
     static BigInteger Pow(BigInteger a, BigInteger b) {
-        BigInteger sum= 1;
+        BigInteger sum = 1;
         for (int i = 0; i < b; i++) sum *= a;
 
         return sum;
-    } 
+    }
 
     public static int DistinctPrimesFactors(int start, int limit) {
-        Dictionary<int,List<int>> PrimesFactors = new Dictionary<int,List<int>>();
-        var list = ListPrimes(limit/2 + 1);
+        Dictionary<int, List<int>> PrimesFactors = new Dictionary<int, List<int>>();
+        var list = ListPrimes(limit / 2 + 1);
         for (int i = start; i < limit; i++)
         {
             List<int> primes = new();
-            for (int j = 1; j < i/2 + 1; j++)
+            for (int j = 1; j < i / 2 + 1; j++)
             {
-                if (i % j == 0 && list.Contains(j) )
+                if (i % j == 0 && list.Contains(j))
                 {
                     primes.Add(j);
                 }
-                
+
             }
 
-            if (primes.Count > 3 )
+            if (primes.Count > 3)
             {
 
                 PrimesFactors.Add(i, primes);
@@ -972,9 +972,9 @@ public static class projectEuler1to50
         }
 
         return 0;
-    } 
+    }
 
-    static List<int> ListPrimes( int limit, int init = 1)
+    static List<int> ListPrimes(int limit, int init = 1)
     {
         List<int> ListPrimes = new();
 
@@ -1024,13 +1024,13 @@ public static class projectEuler1to50
         int same = 0;
         for (BigInteger i = 2; i < limit; i++)
         {
-            BigInteger tri = Triangular(i);               
-            
+            BigInteger tri = Triangular(i);
+
             for (BigInteger ji = i; ji > 1; ji -= 3)
             {
-                
+
                 BigInteger pen = Pentagonal(ji);
-                
+
                 if (tri == pen)
                 {
                     for (BigInteger k = ji; k > 1; k--)
@@ -1052,7 +1052,7 @@ public static class projectEuler1to50
             }
         }
         return -1;
-    }    
+    }
 
     public static BigInteger PentagonalNumber()
     {
@@ -1064,7 +1064,7 @@ public static class projectEuler1to50
         }
         for (int i = 0; i < numbers.Count(); i++)
         {
-            for (int j = i+1; j < numbers.Count(); j++)
+            for (int j = i + 1; j < numbers.Count(); j++)
             {
                 var sum = numbers[i] + numbers[j];
                 if (numbers.Contains(sum))
@@ -1090,7 +1090,7 @@ public static class projectEuler1to50
         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
         List<BigInteger> listTriangleNumber = new();
-        int limit = 100;        
+        int limit = 100;
 
         for (int i = 1; i < limit; i++)
         {
@@ -1103,11 +1103,11 @@ public static class projectEuler1to50
             for (int i = 0; i < item.Length; i++)
             {
                 int value = alphabet.IndexOf(item[i]);
-                sum += value + 1;                
+                sum += value + 1;
             }
 
-            if (listTriangleNumber.Contains(sum)) count++;    
-           
+            if (listTriangleNumber.Contains(sum)) count++;
+
         }
 
 
@@ -1124,7 +1124,7 @@ public static class projectEuler1to50
         foreach (var item in piramidClean)
         {
             var aux = item.Split(" ");
-            int[] ints = new int[aux.Length]; 
+            int[] ints = new int[aux.Length];
             for (int i = 0; i < aux.Length; i++)
             {
                 ints[i] = Convert.ToInt16(aux[i]);
@@ -1146,7 +1146,7 @@ public static class projectEuler1to50
                 {
                     suma += item[index + 1];
                     index += 1;
-                }                
+                }
             }
             else
             {
@@ -1162,20 +1162,20 @@ public static class projectEuler1to50
     public static int CoinSums()
     {
         int limit = 200;
-        int[] coins = new int[] { 1, 2, 5, 10, 20, 50, 100, 200};
+        int[] coins = new int[] { 1, 2, 5, 10, 20, 50, 100, 200 };
         int sum = 0;
         int sumLimits = 0;
 
         int[] multiplyCoins = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
 
 
-        for (int i = 0; i < 200 + 1 ; i++)
+        for (int i = 0; i < 200 + 1; i++)
         {
             for (int j = 0; j < 100 + 1; j++)
             {
                 for (int k = 0; k < 40 + 1; k++)
                 {
-                    for (int l = 0; l < 20 +1; l++)
+                    for (int l = 0; l < 20 + 1; l++)
                     {
                         for (int m = 0; m < 10 + 1; m++)
                         {
@@ -1221,7 +1221,7 @@ public static class projectEuler1to50
     {
         int total = 0;
         List<int> listProducts = new List<int>();
-        for(int i = 1; i < 9999 + 1; i++)
+        for (int i = 1; i < 9999 + 1; i++)
         {
             for (int j = i; j < 9999; j++)
             {
@@ -1229,17 +1229,17 @@ public static class projectEuler1to50
 
                 char[] ValueI = i.ToString().ToCharArray();
                 char[] Valuej = j.ToString().ToCharArray();
-                char[] result = (i*j).ToString().ToCharArray();
+                char[] result = (i * j).ToString().ToCharArray();
                 if ((ValueI.Length + Valuej.Length + result.Length) == 9)
                 {
                     var cr = ValueI.Concat(Valuej).Concat(result).ToArray();
-                    if (cr.Distinct().Count() != 9 ) continue;                  
-                    
-                    if (listProducts.Contains(i * j) || cr.Contains('0')) continue;                        
-                    
-                    listProducts.Add(i * j);    
+                    if (cr.Distinct().Count() != 9) continue;
+
+                    if (listProducts.Contains(i * j) || cr.Contains('0')) continue;
+
+                    listProducts.Add(i * j);
                     total += i * j;
-                    
+
                 }
             }
         }
@@ -1259,22 +1259,22 @@ public static class projectEuler1to50
 
     static public void DigitFactorials()
     {
-            BigInteger totalSum = 0;
+        BigInteger totalSum = 0;
         for (int i = 3; i < 1000000; i++)
         {
             char[] digits = i.ToString().ToCharArray();
             BigInteger sum = 0;
             for (int j = 0; j < digits.Count(); j++)
-            {                
-                var fac = Factorial2( Convert.ToInt32(digits[j] - '0'));
-                sum += fac;                
+            {
+                var fac = Factorial2(Convert.ToInt32(digits[j] - '0'));
+                sum += fac;
             }
 
             if (sum == i)
             {
                 totalSum += sum;
             }
-            
+
         }
         Console.WriteLine(totalSum);
     }
@@ -1287,7 +1287,7 @@ public static class projectEuler1to50
             string result = "";
             for (int j = 1; j < 10; j++)
             {
-                
+
                 result += (i * j).ToString();
 
                 if (result.Length > 9 || (result.Distinct().Count() != result.Length) || result.Contains('0')) break;
@@ -1299,9 +1299,9 @@ public static class projectEuler1to50
                     {
                         mostValue = pandigital;
                     }
-                    
+
                     Console.WriteLine(mostValue);
-                    
+
                 }
             }
         }
@@ -1319,12 +1319,12 @@ public static class projectEuler1to50
             double sumDigits = 0;
             for (int j = 0; j < inChar.Count(); j++)
             {
-                sumDigits +=  Math.Pow(Convert.ToDouble(inChar[j]-'0'), 5);
+                sumDigits += Math.Pow(Convert.ToDouble(inChar[j] - '0'), 5);
             }
-            if (sumDigits == i )
+            if (sumDigits == i)
             {
-                Console.WriteLine( $"{i} - sum of digits {sumDigits}");
-               
+                Console.WriteLine($"{i} - sum of digits {sumDigits}");
+
                 sumTotal += sumDigits;
             }
         }
@@ -1354,7 +1354,7 @@ public static class projectEuler1to50
         int divisor = 0;
         for (int i = 1; i <= n; i++)
         {
-            if (n%i == 0)
+            if (n % i == 0)
             {
                 divisor++;
                 if (divisor > 2) break;
@@ -1362,7 +1362,7 @@ public static class projectEuler1to50
         }
 
         if (divisor == 2) return true;
-        
+
         return false;
     }
 
@@ -1383,22 +1383,22 @@ public static class projectEuler1to50
         int d = textNumber[10001] - '0';
         int e = textNumber[100001] - '0';
         int f = textNumber[1000001] - '0';
-        Console.WriteLine(a*ab*b*c*d*e*f);
+        Console.WriteLine(a * ab * b * c * d * e * f);
     }
 
     public static void DistinctPowers()
     {
-        List<BigInteger> lista = new List<BigInteger>(); 
-        List<BigInteger> listaDefinitiva = new List<BigInteger>(); 
+        List<BigInteger> lista = new List<BigInteger>();
+        List<BigInteger> listaDefinitiva = new List<BigInteger>();
         for (BigInteger a = 2; a <= 100; a++)
         {
             for (int b = 2; b <= 100; b++)
             {
                 BigInteger sum = 0;
-                
 
-                lista.Add(BigInteger.Pow(a,b));
-                
+
+                lista.Add(BigInteger.Pow(a, b));
+
             }
             listaDefinitiva = lista.Distinct().ToList();
         }
@@ -1408,7 +1408,7 @@ public static class projectEuler1to50
     public static void NumberSpiralDiagonals()
     {
         int total = 1001 * 1001;
-        List<int> list = new List<int>();              
+        List<int> list = new List<int>();
         int flag = 0;
 
         for (int i = 1; i <= total; i++)
@@ -1418,7 +1418,7 @@ public static class projectEuler1to50
 
         int sum = list[0];
         int IndexIncreased = 2;
-        for (int i = 2; i <= list.Count(); i = i+ IndexIncreased)
+        for (int i = 2; i <= list.Count(); i = i + IndexIncreased)
         {
             sum += list[i];
             flag++;
@@ -1431,4 +1431,85 @@ public static class projectEuler1to50
 
         Console.WriteLine(sum);
     }
+
+    
+
+    public static void QuadraticPrimes()
+    {
+        
+        List<int> listInts = new List<int>();
+        List<int> listBigest = new List<int>();
+        bigestList bigestList = new bigestList();
+
+            for (int a = -999; a < 1000; a++)
+            {
+                for (int b = -1000; b <= 1000; b++)
+                {
+                    listInts.Clear();
+                    for (int n = 0; n < 1000000; n++)
+                    {
+                        int result = Convert.ToInt16(Math.Pow(n, 2) + (a * n) + b);
+
+                        if (!IsPrime(result)) break;
+
+                        listInts.Add(result);
+                        if (listInts.Count > bigestList?.bigest.Count)
+                        {
+                            bigestList bigestList1 = new bigestList()
+                            {
+                                bigest = new List<int>(listInts),
+                                a = a,
+                                b = b
+                            };
+                            bigestList = bigestList1;
+                        }
+                        
+                        
+                    }
+                }
+            }
+
+        Console.WriteLine( Math.Abs(bigestList.a* bigestList.b));
+        
+    }
+
+    public static void DoubleBasePalindromes(){
+
+        int totalsum = 0;
+        for (int i = 1; i < 1000000; i++)
+        {            
+            string number = i.ToString();
+            var chars = number.ToCharArray();
+            Array.Reverse(chars);
+            var newstring = new String(chars);
+            if (number == newstring)
+            {
+                
+
+                string binaryOne = Convert.ToString(i, 2);
+                var binaryChar = binaryOne.ToCharArray();
+                Array.Reverse(binaryChar);
+                var binaryReverse = new String(binaryChar);
+
+                if (binaryOne == binaryReverse)
+                {
+                    Console.WriteLine($"{number} - {newstring}");
+                    Console.WriteLine($"{binaryOne} - {binaryReverse}");
+                    totalsum += i;
+                }
+                
+            }
+        }
+        Console.WriteLine(totalsum);
+    }
+
+    public class bigestList
+    {
+        public int a { get; set; }
+        public int b { get; set; }
+
+        public List<int> bigest { get; set; } = new List<int>();
+    }
+
 }
+

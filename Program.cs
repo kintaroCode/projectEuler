@@ -55,5 +55,11 @@
 //projectEuler1to50.DistinctPowers();
 
 //problem 28
-projectEuler1to50.NumberSpiralDiagonals();
+//projectEuler1to50.NumberSpiralDiagonals();
+
+//problem 36
+//projectEuler1to50.DoubleBasePalindromes();
+
+//problem 27
+projectEuler1to50.QuadraticPrimes();
 
